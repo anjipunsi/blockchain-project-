@@ -1,11 +1,11 @@
 //Your IPFS api key in ifura.io
-const projectId = "28LuNAotbXzcvtpOcE9F8ayKOeP";
+const projectId = "";
 //Your api secret in ifura.io
-const projectSecret = "3de3d9c099c6c0c168e39b8bc03e2f7a";
+const projectSecret = "a6ee14d1515749f2a0dfd02e0eaf6dd3";
 window.CONTRACT = {
-  address: "Contarct Address after deploying it via Remix Online IDE",
-  network: "Example : https://polygon-rpc.com/",
-  explore: "Example : https://polygonscan.com/",
+  address: "0xea210564d078E5717D9A2df45f898f8Cb25adFf5",
+  network: "https://sepolia-faucet.pk910.de/",
+  explore: "https://sepolia-faucet.pk910.de/",
   // Your Contract ABI
   abi: [
     {
@@ -238,7 +238,7 @@ async function connect() {
       console.log(selectedAccount);
       window.localStorage.setItem("userAddress", window.userAddress);
       window.location.reload();
-    } catch (error) {}
+    } catch (error) { }
   } else {
     $("#upload_file_button").attr("disabled", true);
     $("#doc-file").attr("disabled", true);
@@ -248,7 +248,7 @@ async function connect() {
 }
 
 window.onload = async () => {
-  if(window.location.href.indexOf("verify.html") > -1){
+  if (window.location.href.indexOf("verify.html") > -1) {
     $("#loader").hide();
     $(".loader-wraper").fadeOut("slow");
 
@@ -280,11 +280,10 @@ window.onload = async () => {
       $("#loginButton").hide();
       $("#userAddress")
         .html(`<i class="fa-solid fa-address-card mx-2 text-primary"></i>${truncateAddress(
-        window.userAddress
-      )}
-       <a class="text-info" href="${window.CONTRACT.explore}/address/${
-        window.userAddress
-      }" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-square-arrow-up-right text-warning"></i></a>  
+          window.userAddress
+        )}
+       <a class="text-info" href="${window.CONTRACT.explore}/address/${window.userAddress
+          }" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-square-arrow-up-right text-warning"></i></a>  
        </a>`);
 
       //if admin is viewed then show the doc,exporter counters
@@ -463,8 +462,8 @@ async function get_ethBalance() {
     if (err === null) {
       $("#userBalance").html(
         "<i class='fa-brands fa-gg-circle mx-2 text-danger'></i>" +
-          web3.utils.fromWei(balance).substr(0, 6) +
-          ""
+        web3.utils.fromWei(balance).substr(0, 6) +
+        ""
       );
     } else $("#userBalance").html("n/a");
   });
@@ -479,9 +478,9 @@ if (window.ethereum) {
 function printUploadInfo(result) {
   $("#transaction-hash").html(
     `<a target="_blank" title="View Transaction at Polygon Scan" href="${window.CONTRACT.explore}/tx/` +
-      result.transactionHash +
-      '"+><i class="fa fa-check-circle font-size-2 mx-1 text-white mx-1"></i></a>' +
-      truncateAddress(result.transactionHash)
+    result.transactionHash +
+    '"+><i class="fa fa-check-circle font-size-2 mx-1 text-white mx-1"></i></a>' +
+    truncateAddress(result.transactionHash)
   );
   $("#file-hash").html(
     `<i class="fa-solid fa-hashtag mx-1"></i> ${truncateAddress(
@@ -610,7 +609,7 @@ async function sendHash() {
         generateQRCode();
       })
 
-      .on("confirmation", function (confirmationNr) {})
+      .on("confirmation", function (confirmationNr) { })
       .on("error", function (error) {
         console.log(error.message);
         $("#note").html(`<h5 class="text-center">${error.message} 😏</h5>`);
@@ -807,7 +806,7 @@ async function addExporter() {
           );
         })
 
-        .on("confirmation", function (confirmationNr) {})
+        .on("confirmation", function (confirmationNr) { })
         .on("error", function (error) {
           console.log(error.message);
           $("#note").html(`<h5 class="text-center">${error.message}</h5>`);
@@ -894,7 +893,7 @@ async function editExporter() {
           );
         })
 
-        .on("confirmation", function (confirmationNr) {})
+        .on("confirmation", function (confirmationNr) { })
         .on("error", function (error) {
           console.log(error.message);
           $("#note").html(`<h5 class="text-center">${error.message} 👍</h5>`);
